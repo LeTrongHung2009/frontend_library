@@ -61,7 +61,7 @@ const Return = () => {
     if (!isRefresh) setBorrowTickets(null);
 
     try {
-      const res = await axios.get(`https://localhost:5000/api/kiosk/borrowed/${libraryCode}/${studentId.trim()}`);
+      const res = await axios.get(`https://library.library-os.workers.dev/api/kiosk/borrowed/${libraryCode}/${studentId.trim()}`);
       
       const data = res.data;
       setBorrowTickets(data);
@@ -114,7 +114,7 @@ const Return = () => {
         }
       };
 
-      await axios.post('https://localhost:5000/api/kiosk/return', payload, config);
+      await axios.post('https://library.library-os.workers.dev/api/kiosk/return', payload, config);
 
       toast.success(`✅ Đã trả phiếu mượn thành công!`);
       setShowVerifyModal(false);
