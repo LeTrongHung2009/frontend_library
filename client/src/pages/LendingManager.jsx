@@ -76,7 +76,7 @@ const LendingManager = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/borrows', config);
+      const res = await axios.get('http://library.library-os.workers.dev/api/borrows', config);
       // DEBUG: Kiểm tra xem dữ liệu trả về có trường studentId hay không
       setBorrows(res.data);
     } catch (err) {
@@ -90,7 +90,7 @@ const LendingManager = () => {
   const handleReturn = async (id) => {
     if(!window.confirm("Xác nhận đã trả ĐỦ sách?")) return;
     try {
-      await axios.put(`http://localhost:5000/api/borrows/${id}/return`, {}, config);
+      await axios.put(`http://library.library-os.workers.dev/api/borrows/${id}/return`, {}, config);
       toast.success("Đã trả sách");
       setBorrows(borrows.map(b => b._id === id ? { ...b, status: 'returned' } : b));
     } catch (err) { toast.error("Lỗi cập nhật"); }
@@ -99,7 +99,7 @@ const LendingManager = () => {
   const handleDelete = async (id) => {
     if(!window.confirm("Bạn chắc chắn muốn XÓA lịch sử này?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/borrows/${id}`, config);
+      await axios.delete(`http://library.library-os.workers.dev/api/borrows/${id}`, config);
       toast.info("Đã xóa phiếu mượn");
       setBorrows(borrows.filter(b => b._id !== id));
     } catch (err) { toast.error("Không thể xóa"); }
