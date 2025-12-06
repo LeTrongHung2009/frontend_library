@@ -18,7 +18,7 @@ const BookManager = () => {
   // 1. TẢI SÁCH TỪ DATABASE
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/books', config);
+      const res = await axios.get('http://library.library-os.workers.dev/api/books', config);
       setBooks(res.data);
     } catch (err) {
       console.error("Lỗi tải sách:", err);
@@ -41,10 +41,10 @@ const BookManager = () => {
       };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/books/${editingId}`, payload, config);
+        await axios.put(`http://library.library-os.workers.dev/api/books/${editingId}`, payload, config);
         alert("Cập nhật thành công!");
       } else {
-        await axios.post('http://localhost:5000/api/books', payload, config);
+        await axios.post('http://library.library-os.workers.dev/api/books', payload, config);
         alert("Thêm sách mới thành công!");
       }
       
@@ -61,7 +61,7 @@ const BookManager = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa cuốn sách này?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/books/${id}`, config);
+        await axios.delete(`http://library.library-os.workers.dev/api/books/${id}`, config);
         fetchBooks();
       } catch (err) {
         alert("Lỗi xóa sách");
