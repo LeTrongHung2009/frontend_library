@@ -34,7 +34,7 @@ const Dashboard = () => {
     const fetchStats = async () => {
       try {
         const config = { headers: { 'auth-token': token } };
-        const res = await axios.get('http://localhost:5000/api/dashboard/stats', config);
+        const res = await axios.get('http://library.library-os.workers.dev/api/dashboard/stats', config);
         setStats(res.data);
       } catch (error) {
         console.error("Lỗi lấy thống kê:", error);
