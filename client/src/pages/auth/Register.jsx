@@ -17,7 +17,7 @@ const Register = () => {
 
     try {
       // Gọi API
-      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const res = await axios.post('http://library.library-os.workers.dev/api/auth/register', formData);
       const { token, user } = res.data;
 
       // Logic: Nếu có token -> Lưu & Chuyển Dashboard. Nếu không -> Chuyển Login.
