@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #EDF5E1; /* Màu Ice White */
+  color: #0B2538; /* Màu Deep Night */
+}
