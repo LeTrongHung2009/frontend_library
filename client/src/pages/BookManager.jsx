@@ -18,7 +18,7 @@ const BookManager = () => {
   // 1. TẢI SÁCH TỪ DATABASE
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('http://library.library-os.workers.dev/api/books', config);
+      const res = await axios.get('https://library.library-os.workers.dev/api/books', config);
       setBooks(res.data);
     } catch (err) {
       console.error("Lỗi tải sách:", err);
@@ -37,14 +37,14 @@ const BookManager = () => {
       // Nếu không có ảnh, dùng ảnh mặc định
       const payload = {
         ...formData,
-        image: formData.image || 'https://via.placeholder.com/300x400?text=No+Image'
+        image: formData.image || 'httpss://via.placeholder.com/300x400?text=No+Image'
       };
 
       if (editingId) {
-        await axios.put(`http://library.library-os.workers.dev/api/books/${editingId}`, payload, config);
+        await axios.put(`https://library.library-os.workers.dev/api/books/${editingId}`, payload, config);
         alert("Cập nhật thành công!");
       } else {
-        await axios.post('http://library.library-os.workers.dev/api/books', payload, config);
+        await axios.post('https://library.library-os.workers.dev/api/books', payload, config);
         alert("Thêm sách mới thành công!");
       }
       
@@ -61,7 +61,7 @@ const BookManager = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa cuốn sách này?')) {
       try {
-        await axios.delete(`http://library.library-os.workers.dev/api/books/${id}`, config);
+        await axios.delete(`https://library.library-os.workers.dev/api/books/${id}`, config);
         fetchBooks();
       } catch (err) {
         alert("Lỗi xóa sách");
@@ -133,7 +133,7 @@ const BookManager = () => {
           return (
             <div key={book._id} className="group bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden hover:border-indigo-500 transition-all">
               <div className="aspect-[3/4] overflow-hidden relative bg-black">
-                <img src={book.image || 'https://via.placeholder.com/300x400?text=No+Image'} alt={book.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={book.image || 'httpss://via.placeholder.com/300x400?text=No+Image'} alt={book.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 
                 {/* --- BADGE TRẠNG THÁI (ĐÃ SỬA) --- */}
                 <div className={`absolute top-2 right-2 px-2 py-1 rounded text-[10px] font-bold uppercase shadow-sm ${isBorrowed ? 'bg-red-500 text-white' : 'bg-green-500 text-black'}`}>
@@ -186,7 +186,7 @@ const BookManager = () => {
               </div>
               <div>
                   <label className="text-xs text-zinc-400 font-bold uppercase">Link Ảnh Bìa</label>
-                  <input type="text" className="w-full bg-black border border-zinc-700 rounded-lg p-3 text-white mt-1" placeholder="https://..." value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} />
+                  <input type="text" className="w-full bg-black border border-zinc-700 rounded-lg p-3 text-white mt-1" placeholder="httpss://..." value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} />
               </div>
               <div className="flex justify-end gap-3 mt-8">
                 <button onClick={() => setShowModal(false)} className="px-4 py-2 text-zinc-400 hover:text-white">Hủy bỏ</button>
