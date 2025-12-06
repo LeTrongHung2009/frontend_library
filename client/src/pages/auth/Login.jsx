@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       // 1. Gọi API Login
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post('http://library.library-os.workers.dev/api/auth/login', formData);
       const { token, user } = res.data;
 
       // 2. Kiểm tra token (quan trọng)
