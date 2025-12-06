@@ -61,7 +61,7 @@ const Borrow = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/books', config);
+      const res = await axios.get('https://localhost:5000/api/books', config);
       setBooks(res.data);
     } catch (err) { console.error(err); }
   };
@@ -107,7 +107,7 @@ const Borrow = () => {
         dueDate: formData.returnDate 
       };
 
-      await axios.post('http://localhost:5000/api/borrows', payload, config);
+      await axios.post('https://localhost:5000/api/borrows', payload, config);
       toast.success(`🎉 Mượn thành công ${selectedBooks.length} cuốn sách!`);
       
       // Reset Form
@@ -312,7 +312,7 @@ const Borrow = () => {
                     return (
                         <div key={book._id} onClick={() => toggleBook(book)} className={`group cursor-pointer border rounded-2xl overflow-hidden relative transition-all duration-200 ${isSelected ? 'border-indigo-500 ring-2 ring-indigo-500/20' : 'border-zinc-800 bg-zinc-900 hover:border-zinc-600 hover:scale-[1.02]'}`}>
                             <div className="aspect-[2/3] overflow-hidden relative bg-zinc-800">
-                                <img src={book.image || 'https://via.placeholder.com/150'} alt={book.title} className="w-full h-full object-cover" />
+                                <img src={book.image || 'httpss://via.placeholder.com/150'} alt={book.title} className="w-full h-full object-cover" />
                                 {isSelected && (
                                     <div className="absolute inset-0 bg-indigo-600/80 backdrop-blur-[2px] flex flex-col items-center justify-center">
                                         <BiCheck className="text-5xl text-white mb-1" />
