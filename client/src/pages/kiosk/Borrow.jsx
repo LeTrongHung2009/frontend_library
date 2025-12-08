@@ -61,7 +61,7 @@ const Borrow = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('https://localhost:5000/api/books', config);
+      const res = await axios.get('https://library.library-os.workers.dev/api/books', config);
       setBooks(res.data);
     } catch (err) { console.error(err); }
   };
@@ -107,7 +107,7 @@ const Borrow = () => {
         dueDate: formData.returnDate 
       };
 
-      await axios.post('https://localhost:5000/api/borrows', payload, config);
+      await axios.post('https://library.library-os.workers.dev/api/borrows', payload, config);
       toast.success(`🎉 Mượn thành công ${selectedBooks.length} cuốn sách!`);
       
       // Reset Form
