@@ -15,7 +15,7 @@ const Activation = () => {
 
     const verifySavedCode = async () => {
         try {
-            await axios.post('https://localhost:5000/api/kiosk/verify-code', { code: savedCode });
+            await axios.post('https://library.library-os.workers.dev/api/kiosk/verify-code', { code: savedCode });
             // Nếu mã còn sống -> Vào thẳng menu
             navigate('/kiosk/menu'); 
         } catch (err) {
@@ -37,7 +37,7 @@ const Activation = () => {
     setLoading(true); // Bắt đầu loading
 
     try {
-      const res = await axios.post('https://localhost:5000/api/kiosk/verify-code', { code });
+      const res = await axios.post('https://library.library-os.workers.dev/api/kiosk/verify-code', { code });
 
       // Lưu thông tin vào localStorage
       localStorage.setItem('kiosk_code', res.data.libraryCode);
