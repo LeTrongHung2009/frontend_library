@@ -20,7 +20,7 @@ const Menu = () => {
     const checkLibraryStatus = async () => {
       try {
         // Gọi API kiểm tra nhẹ (Ping)
-        await axios.post('https://localhost:5000/api/kiosk/verify-code', { code: libraryCode });
+        await axios.post('https://library.library-os.workers.dev/api/kiosk/verify-code', { code: libraryCode });
       } catch (err) {
         // Nếu lỗi (404/Deleted) -> Xóa cache và thoát
         console.error("Mất kết nối thư viện:", err);
